@@ -53,7 +53,7 @@ var users = [
     id: 2,
     name: "Sumit",
     email: "sumit@gmail.com",
-    password: "sumit123",
+    password: "123456",
     type: "Customer",
   },
 ];

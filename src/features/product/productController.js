@@ -44,17 +44,35 @@ export default class ProductController {
 
   // rate the product
   rateProduct = (req, res) => {
-    const { userId, productId, rating } = req.query;
-    const error = ProductModel.rateProduct(+userId, +productId, rating);
-    if (error) {
-      res.status(400).json({
+    try {
+      const { productId, rating } = req.body;
+      const userId = req.user.id;
+      console.log(userId);
+      const ratingValue = Number(rating);
+
+      if (Number.isNaN(ratingValue) || ratingValue < 0 || ratingValue > 5) {
+        return res.status(401).json({
+          success: false,
+          message: "Rating is invalid",
+        });
+      }
+
+      const error = ProductModel.rateProduct(userId, +productId, ratingValue);
+      if (error) {
+        res.status(400).json({
+          success: false,
+          message: error,
+        });
+      } else {
+        res.status(200).json({
+          success: true,
+          message: "Rating has been added",
+        });
+      }
+    } catch (error) {
+      res.status(500).json({
         success: false,
-        message: error,
-      });
-    } else {
-      res.status(200).json({
-        success: true,
-        message: "Rating has been added",
+        message: "Internal Server Error",
       });
     }
   };

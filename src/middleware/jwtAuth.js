@@ -40,6 +40,7 @@ const jwtAuth = (req, res, next) => {
       });
     }
 
+    console.log(user);
     // 5. Attach user information to the request object (optional)
     req.user = user;
 

@@ -66,16 +66,22 @@ export default class ProductModel {
       return singleUser.id === userId;
     });
 
-    // if user isnot found then return the message with user not found
+    // if user is not found then return the message with user not found
     if (!user) {
-      return "User not found";
+      return {
+        success: false,
+        message: "User Not Found",
+      };
     }
 
     // validate the product
     const product = ProductModel.getProductById(productId);
 
     if (!product) {
-      return "Product not found";
+      return {
+        success: false,
+        message: "Product Not Found",
+      };
     }
 
     // Check if there are any ratings in the product and if not then add ratings array.
@@ -94,10 +100,7 @@ export default class ProductModel {
 
       // if it exists then update the rating with same user id
       if (existingRatingIndex >= 0) {
-        product.ratings[existingRatingIndex] = {
-          userID: userId,
-          rating: rating,
-        };
+        product.ratings[existingRatingIndex]["rating"] = rating;
       } else {
         // no user exists
         product.ratings.push({

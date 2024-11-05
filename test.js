@@ -27,15 +27,17 @@
 
 // check();
 
-import { configDotenv } from "dotenv"; 
+import { configDotenv } from "dotenv";
 configDotenv();
 
 console.log(process.env.SECRET_KEY);
 
 // (JWT) are referred to as stateless because the authorizing server needs to maintain no state; the token itself is all that is needed to verify a token bearer's authorization.
 
-// In stateless authentication there is no need to store user information in the session. We can easily use the same token for fetching a secure resource from a domain other than the one we are logged in to. 
+// In stateless authentication there is no need to store user information in the session. We can easily use the same token for fetching a secure resource from a domain other than the one we are logged in to.
 
 //+++++++++++ adavantage ++++++++++++++++
 
-// Since JWTs already contain necessary information about the user, they reduce the need for extra queries to a database for user data. 
+// Since JWTs already contain necessary information about the user, they reduce the need for extra queries to a database for user data.
+
+console.log("Hello World");

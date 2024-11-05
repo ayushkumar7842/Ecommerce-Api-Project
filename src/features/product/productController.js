@@ -57,8 +57,13 @@ export default class ProductController {
         });
       }
 
-      const error = ProductModel.rateProduct(userId, +productId, ratingValue);
-      if (error) {
+      const isRatingAdded = ProductModel.rateProduct(
+        userId,
+        productId,
+        ratingValue
+      );
+
+      if (!isRatingAdded.success) {
         res.status(400).json({
           success: false,
           message: error,
@@ -66,7 +71,7 @@ export default class ProductController {
       } else {
         res.status(200).json({
           success: true,
-          message: "Rating has been added",
+          data: isRatingAdded.data,
         });
       }
     } catch (error) {

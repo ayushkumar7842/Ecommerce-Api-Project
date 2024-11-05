@@ -109,6 +109,11 @@ export default class ProductModel {
         });
       }
     }
+
+    return {
+      success: true,
+      data: product,
+    };
   }
 }
 

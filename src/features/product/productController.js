@@ -66,7 +66,7 @@ export default class ProductController {
       if (!isRatingAdded.success) {
         res.status(400).json({
           success: false,
-          message: error,
+          message: isRatingAdded.message,
         });
       } else {
         res.status(200).json({

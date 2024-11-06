@@ -2,7 +2,7 @@ import express, { urlencoded, json } from "express";
 import dotenv from "dotenv";
 import productRoutes from "./src/features/product/productRoute.js";
 import userRoutes from "./src/features/user/userRoutes.js";
-// import customBasicAuth from "./src/middleware/basicAuth.js";
+import cartRoutes from "./src/features/cart/cartRoute.js";
 import jwtAuth from "./src/middleware/jwtAuth.js";
 
 dotenv.config();
@@ -20,6 +20,9 @@ app.use(json());
 
 // Handling the product routes
 app.use("/api/products", jwtAuth, productRoutes);
+
+// Handling the cart routes
+app.use("/api/carts", jwtAuth, cartRoutes);
 
 // Hadling the user routes
 app.use("/api/users", userRoutes);

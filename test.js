@@ -41,3 +41,4 @@ console.log(process.env.SECRET_KEY);
 // Since JWTs already contain necessary information about the user, they reduce the need for extra queries to a database for user data.
 
 console.log("Hello World");
+console.log("TESTING");
